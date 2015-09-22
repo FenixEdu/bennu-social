@@ -93,7 +93,8 @@ class api.GoogleAPI extends api.SocialAPI {
 class user.GoogleUser extends user.SocialUser {
 	public String state;
 	public String tokenId; 
-	public String tokenType; 
+	public String tokenType;
+	public String refreshToken;
 	public DateTime expirationDate;
 }
 

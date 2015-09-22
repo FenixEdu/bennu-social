@@ -1,33 +1,19 @@
 package org.fenixedu.bennu.social.domain;
 
-import java.util.Arrays;
-import java.util.Set;
+import org.fenixedu.bennu.social.annotations.*;
+import org.fenixedu.bennu.social.domain.api.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletContainerInitializer;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.HandlesTypes;
+import java.util.Arrays;
+import java.util.Set;
 
-import org.fenixedu.bennu.social.annotations.RequiresBitbucket;
-import org.fenixedu.bennu.social.annotations.RequiresDropbox;
-import org.fenixedu.bennu.social.annotations.RequiresFacebook;
-import org.fenixedu.bennu.social.annotations.RequiresFlickr;
-import org.fenixedu.bennu.social.annotations.RequiresGithub;
-import org.fenixedu.bennu.social.annotations.RequiresGoogle;
-import org.fenixedu.bennu.social.annotations.RequiresLinkedin;
-import org.fenixedu.bennu.social.annotations.RequiresTwitter;
-import org.fenixedu.bennu.social.domain.api.BitbucketAPI;
-import org.fenixedu.bennu.social.domain.api.DropboxAPI;
-import org.fenixedu.bennu.social.domain.api.FacebookAPI;
-import org.fenixedu.bennu.social.domain.api.FlickrAPI;
-import org.fenixedu.bennu.social.domain.api.GithubAPI;
-import org.fenixedu.bennu.social.domain.api.GoogleAPI;
-import org.fenixedu.bennu.social.domain.api.LinkedinAPI;
-import org.fenixedu.bennu.social.domain.api.TwitterAPI;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-@HandlesTypes({ RequiresGithub.class, RequiresLinkedin.class })
+@HandlesTypes({ RequiresGithub.class, RequiresLinkedin.class, RequiresBitbucket.class, RequiresDropbox.class,
+        RequiresFacebook.class, RequiresGoogle.class, RequiresTwitter.class })
 public class SocialInitializer implements ServletContainerInitializer {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(SocialInitializer.class);

@@ -184,6 +184,8 @@ ${portal.toolkit()}
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <form:form method="POST" class="form-horizontal" action="${pageContext.request.contextPath}/bennu-social-admin/configAPI/${github.externalId}" commandName="github">
+            ${csrf.field()}
+
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title" id="githubModalLabel"><spring:message code="label.api.config.title" arguments="Github"/></h4>
@@ -237,6 +239,8 @@ ${portal.toolkit()}
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <form:form method="POST" class="form-horizontal" action="${pageContext.request.contextPath}/bennu-social-admin/configAPI/${linkedin.externalId}" commandName="linkedin">
+            ${csrf.field()}
+
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title" id="linkedinModalLabel"><spring:message code="label.api.config.title" arguments="Linkedin"/></h4>
@@ -290,6 +294,8 @@ ${portal.toolkit()}
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <form:form method="POST" class="form-horizontal" action="${pageContext.request.contextPath}/bennu-social-admin/configAPI/${facebook.externalId}" commandName="facebook">
+            ${csrf.field()}
+
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title" id="facebookModalLabel"><spring:message code="label.api.config.title" arguments="Facebook"/></h4>
@@ -343,6 +349,8 @@ ${portal.toolkit()}
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <form:form method="POST" class="form-horizontal" action="${pageContext.request.contextPath}/bennu-social-admin/configAPI/${twitter.externalId}" commandName="twitter">
+            ${csrf.field()}
+
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title" id="twitterModalLabel"><spring:message code="label.api.config.title" arguments="Twitter"/></h4>
@@ -396,6 +404,8 @@ ${portal.toolkit()}
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <form:form method="POST" class="form-horizontal" action="${pageContext.request.contextPath}/bennu-social-admin/configAPI/${flickr.externalId}" commandName="flickr">
+            ${csrf.field()}
+
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title" id="flickrModalLabel"><spring:message code="label.api.config.title" arguments="Flickr"/></h4>
@@ -449,6 +459,8 @@ ${portal.toolkit()}
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <form:form method="POST" class="form-horizontal" action="${pageContext.request.contextPath}/bennu-social-admin/configAPI/${dropbox.externalId}" commandName="dropbox">
+            ${csrf.field()}
+
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title" id="dropboxModalLabel"><spring:message code="label.api.config.title" arguments="Dropbox"/></h4>
@@ -502,6 +514,8 @@ ${portal.toolkit()}
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <form:form method="POST" class="form-horizontal" action="${pageContext.request.contextPath}/bennu-social-admin/configAPI/${bitbucket.externalId}" commandName="bitbucket">
+            ${csrf.field()}
+
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title" id="bitbucketModalLabel"><spring:message code="label.api.config.title" arguments="Bitbucket"/></h4>
@@ -554,6 +568,8 @@ ${portal.toolkit()}
    <div class="modal-dialog" role="document">
       <div class="modal-content">
          <form:form method="POST" class="form-horizontal" action="${pageContext.request.contextPath}/bennu-social-admin/configAPI/${google.externalId}" commandName="google">
+            ${csrf.field()}
+
             <div class="modal-header">
                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                <h4 class="modal-title" id="googleModalLabel"><spring:message code="label.api.config.title" arguments="Google"/></h4>
@@ -603,6 +619,8 @@ ${portal.toolkit()}
 </div>
 
 <script type="text/javascript">
+   $.ajaxSetup({headers: {'${csrf.headerName}': '${csrf.token}'}});
+
    function updateActive(checkbox){
      var checked = $(checkbox).is(":checked");
      var url = $(checkbox).attr('url');

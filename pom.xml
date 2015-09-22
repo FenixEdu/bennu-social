@@ -18,7 +18,7 @@
     <name>Bennu Social</name>
 
     <properties>
-        <version.org.fenixedu.bennu>3.4.1</version.org.fenixedu.bennu>
+        <version.org.fenixedu.bennu>4.0.0.M1</version.org.fenixedu.bennu>
                 <version.org.fenixedu.bennu.spring>1.2.0</version.org.fenixedu.bennu.spring>
             </properties>
 
@@ -65,7 +65,13 @@
 	   <artifactId>dropbox-core-sdk</artifactId>
 	   <version>[1.7,1.8)</version>
 	</dependency>
-   </dependencies>
+    <dependency>
+        <groupId>com.google.api-client</groupId>
+        <artifactId>google-api-client</artifactId>
+        <version>1.20.0</version>
+    </dependency>
+
+    </dependencies>
 
     <repositories>
         <repository>

@@ -1,12 +1,6 @@
 package org.fenixedu.bennu.social.domain.api;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Optional;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import org.fenixedu.bennu.core.domain.Bennu;
@@ -87,15 +81,9 @@ public class GoogleAPI extends GoogleAPI_Base {
     @Override
     public String getAuthenticationUrlForUser(User user) {
         Optional<GoogleUser> googleUser = getAuthenticatedUser(user);
-
-        if (!googleUser.isPresent()) {
-            googleUser = Optional.of(new GoogleUser(user));
-        }
-
-        String scopes = getBindedScopes();
-
-        return AUTH_URL + "?response_type=code" + "&client_id=" + getClientId() + "&redirect_uri=" + getCallbackURL() + "&scope="
-                + scopes + "&state=" + googleUser.get().getState();
+        return AUTH_URL + "?response_type=code" + "&client_id=" + getClientId() + "&redirect_uri=" + getCallbackURL()
+                + "&scope="+ getBindedScopes() + "&approval_prompt=force&&access_type=offline"
+                + "&state=" + (googleUser.isPresent() ? googleUser.get().getState() :  UUID.randomUUID().toString());
     }
 
     @Override
@@ -105,7 +93,7 @@ public class GoogleAPI extends GoogleAPI_Base {
 
     public String getAccessTokenUrl(String code) {
         return ACCESS_URL + "?code=" + code + "&grant_type=authorization_code" + "&client_id=" + getClientId()
-                + "&client_secret=" + getClientSecret() + "&redirect_uri=" + getCallbackURL();
+               + "&client_secret=" + getClientSecret() + "&redirect_uri=" + getCallbackURL();
     }
 
     public static String makeScopes(Collection<String> scopes) {
