@@ -132,7 +132,7 @@ public class LinkedinAPI extends LinkedinAPI_Base {
         String scopes = getBindedScopes();
 
         return AUTH_URL + "?response_type=code" + "&client_id=" + getClientId() + "&redirect_uri=" + getCallbackURL() + "&state="
-        + linkedinUser.get().getState() + "&scope=" + scopes;
+                + linkedinUser.get().getState() + "&scope=" + scopes;
     }
 
     public static String makeScopes(Collection<String> scopes) {

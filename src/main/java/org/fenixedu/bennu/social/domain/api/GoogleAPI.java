@@ -1,6 +1,13 @@
 package org.fenixedu.bennu.social.domain.api;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.fenixedu.bennu.core.domain.Bennu;
@@ -81,9 +88,9 @@ public class GoogleAPI extends GoogleAPI_Base {
     @Override
     public String getAuthenticationUrlForUser(User user) {
         Optional<GoogleUser> googleUser = getAuthenticatedUser(user);
-        return AUTH_URL + "?response_type=code" + "&client_id=" + getClientId() + "&redirect_uri=" + getCallbackURL()
-                + "&scope="+ getBindedScopes() + "&approval_prompt=force&&access_type=offline"
-                + "&state=" + (googleUser.isPresent() ? googleUser.get().getState() :  UUID.randomUUID().toString());
+        return AUTH_URL + "?response_type=code" + "&client_id=" + getClientId() + "&redirect_uri=" + getCallbackURL() + "&scope="
+                + getBindedScopes() + "&approval_prompt=force&&access_type=offline" + "&state="
+                + (googleUser.isPresent() ? googleUser.get().getState() : UUID.randomUUID().toString());
     }
 
     @Override
@@ -93,7 +100,7 @@ public class GoogleAPI extends GoogleAPI_Base {
 
     public String getAccessTokenUrl(String code) {
         return ACCESS_URL + "?code=" + code + "&grant_type=authorization_code" + "&client_id=" + getClientId()
-               + "&client_secret=" + getClientSecret() + "&redirect_uri=" + getCallbackURL();
+                + "&client_secret=" + getClientSecret() + "&redirect_uri=" + getCallbackURL();
     }
 
     public static String makeScopes(Collection<String> scopes) {
@@ -106,18 +113,18 @@ public class GoogleAPI extends GoogleAPI_Base {
 
     public static void ensureConsistentScope() {
         FenixFramework
-        .atomic(() -> {
-            GoogleAPI instance = getInstance();
+                .atomic(() -> {
+                    GoogleAPI instance = getInstance();
 
-            LOGGER.info("Checking old vs new Google scopes " + instance.getBindedScopes() + " vs "
-                    + makeScopes(instance.getScopes()));
+                    LOGGER.info("Checking old vs new Google scopes " + instance.getBindedScopes() + " vs "
+                            + makeScopes(instance.getScopes()));
 
-            if (instance.getBindedScopes() != null
-                    && !makeScopes(instance.getScopes()).equals(instance.getBindedScopes())) {
-                LOGGER.warn("Google API has changed scopes. Endpoint invocations may fail if users do not review their access for the application");
-            }
-            instance.setBindedScopes(makeScopes(instance.getScopes()));
-        });
+                    if (instance.getBindedScopes() != null
+                            && !makeScopes(instance.getScopes()).equals(instance.getBindedScopes())) {
+                        LOGGER.warn("Google API has changed scopes. Endpoint invocations may fail if users do not review their access for the application");
+                    }
+                    instance.setBindedScopes(makeScopes(instance.getScopes()));
+                });
     }
 
     protected Set<String> getScopes() {

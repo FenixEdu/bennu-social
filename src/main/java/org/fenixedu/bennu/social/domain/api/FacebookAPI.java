@@ -145,18 +145,18 @@ public class FacebookAPI extends FacebookAPI_Base {
 
     public static void ensureConsistentScope() {
         FenixFramework
-        .atomic(() -> {
-            FacebookAPI instance = getInstance();
+                .atomic(() -> {
+                    FacebookAPI instance = getInstance();
 
-            LOGGER.info("Checking old vs new Facebook scopes " + instance.getBindedScopes() + " vs "
-                    + makeScopes(instance.getScopes()));
+                    LOGGER.info("Checking old vs new Facebook scopes " + instance.getBindedScopes() + " vs "
+                            + makeScopes(instance.getScopes()));
 
-            if (instance.getBindedScopes() != null
-                    && !makeScopes(instance.getScopes()).equals(instance.getBindedScopes())) {
-                LOGGER.warn("Facebook API has changed scopes. Endpoint invocations may fail if users do not review their access for the application");
-            }
-            instance.setBindedScopes(makeScopes(instance.getScopes()));
-        });
+                    if (instance.getBindedScopes() != null
+                            && !makeScopes(instance.getScopes()).equals(instance.getBindedScopes())) {
+                        LOGGER.warn("Facebook API has changed scopes. Endpoint invocations may fail if users do not review their access for the application");
+                    }
+                    instance.setBindedScopes(makeScopes(instance.getScopes()));
+                });
     }
 
     protected Set<String> getScopes() {

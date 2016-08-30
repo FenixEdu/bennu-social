@@ -94,7 +94,7 @@ public class SocialCallbackController { //TODO confirmation/error messages
     public String github(Model model, RedirectAttributes redirectAttrs, @RequestParam(value = "state") String state,
             @RequestParam(value = "code", required = false) String code,
             @RequestParam(value = "error", required = false) String error, @RequestParam(value = "error_description",
-            required = false) String errorDescription,
+                    required = false) String errorDescription,
             @RequestParam(value = "error_uri", required = false) String errorUri) {
 
         LOGGER.info("received invocation at github callback endpoint w/ params: state=" + state + ", code=" + code + ", error="
@@ -143,7 +143,7 @@ public class SocialCallbackController { //TODO confirmation/error messages
             @RequestParam(value = "state", required = false) String state,
             @RequestParam(value = "code", required = false) String code,
             @RequestParam(value = "error", required = false) String error, @RequestParam(value = "error_description",
-            required = false) String errorDescription) {
+                    required = false) String errorDescription) {
 
         LOGGER.info("received invocation at linkedin callback endpoint w/ params: state=" + state + ", code=" + code + ", error="
                 + error + ", error_description=" + errorDescription);
@@ -191,7 +191,7 @@ public class SocialCallbackController { //TODO confirmation/error messages
             @RequestParam(value = "state", required = false) String state,
             @RequestParam(value = "code", required = false) String code,
             @RequestParam(value = "error_reason", required = false) String errorReason, @RequestParam(value = "error",
-            required = false) String error,
+                    required = false) String error,
             @RequestParam(value = "error_description", required = false) String errorDescription) {
 
         LOGGER.info("received invocation at facebook callback endpoint w/ params: state=" + state + ", code=" + code + ", error="
@@ -239,7 +239,7 @@ public class SocialCallbackController { //TODO confirmation/error messages
     @RequestMapping(value = "/twitter/callback", method = RequestMethod.GET)
     public String twitter(Model model, RedirectAttributes redirectAttrs,
             @RequestParam(value = "oauth_token", required = false) String oauthToken, @RequestParam(value = "oauth_verifier",
-            required = false) String oauthVerifier, @RequestParam(value = "denied", required = false) String denied) {
+                    required = false) String oauthVerifier, @RequestParam(value = "denied", required = false) String denied) {
 
         LOGGER.info("received invocation at twitter callback endpoint w/ params: oauth_token=" + oauthToken + ", oauth_verifier="
                 + oauthVerifier + ", denied=" + denied);
@@ -318,7 +318,7 @@ public class SocialCallbackController { //TODO confirmation/error messages
     public String dropbox(Model model, RedirectAttributes redirectAttrs, @RequestParam("state") String state, @RequestParam(
             value = "code", required = false) String code,
             @RequestParam(value = "error_description", required = false) String errorDescription, @RequestParam(value = "error",
-            required = false) String error) {
+                    required = false) String error) {
 
         LOGGER.info("received invocation at dropbox callback endpoint w/ params: state=" + state + ", code=" + code + ", error="
                 + error + ", error_description=" + errorDescription);
@@ -361,7 +361,7 @@ public class SocialCallbackController { //TODO confirmation/error messages
     @RequestMapping(value = "/bitbucket/callback", method = RequestMethod.GET)
     public String bitbucket(Model model, RedirectAttributes redirectAttrs,
             @RequestParam(value = "code", required = false) String code, @RequestParam(value = "error_description",
-            required = false) String errorDescription, @RequestParam(value = "error", required = false) String error) {
+                    required = false) String errorDescription, @RequestParam(value = "error", required = false) String error) {
 
         LOGGER.info("received invocation at bitbucket callback endpoint w/ params: code=" + code + ", error=" + error
                 + ", error_description=" + errorDescription);

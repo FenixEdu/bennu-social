@@ -135,7 +135,7 @@ public class TestLinkedinAPI {
         assertEquals(
                 "https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=" + CLIENT_ID + "&redirect_uri="
                         + instance.getCallbackURL() + "&state=" + apiUser.getState() + "&scope=" + instance.getBindedScopes(),
-                        url);
+                url);
     }
 
     @Test

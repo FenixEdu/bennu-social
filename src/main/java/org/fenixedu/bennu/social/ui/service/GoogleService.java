@@ -1,8 +1,8 @@
 package org.fenixedu.bennu.social.ui.service;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import java.util.Arrays;
+import java.util.Optional;
+
 import org.fenixedu.bennu.core.domain.User;
 import org.fenixedu.bennu.social.domain.api.GoogleAPI;
 import org.fenixedu.bennu.social.domain.user.GoogleUser;
@@ -10,13 +10,19 @@ import org.fenixedu.bennu.social.exception.AccessTokenNotProvidedException;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 import pt.ist.fenixframework.Atomic;
 
-import java.util.Arrays;
-import java.util.Optional;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 @Service
 public class GoogleService {
@@ -72,9 +78,11 @@ public class GoogleService {
         String accessToken = json.get("access_token").getAsString();
         String tokenType = json.get("token_type").getAsString();
         String idToken = Optional.ofNullable(json.get("id_token")).map(JsonElement::getAsString).orElse(user.getTokenId());
-        String refreshToken = Optional.ofNullable(json.get("refresh_token")).map(JsonElement::getAsString).orElse(user.getRefreshToken());
-        DateTime expirationDate = Optional.ofNullable(json.get("expires_in")).map(JsonElement::getAsInt)
-                .map(SocialService::getExpirationDate).orElse(null);
+        String refreshToken =
+                Optional.ofNullable(json.get("refresh_token")).map(JsonElement::getAsString).orElse(user.getRefreshToken());
+        DateTime expirationDate =
+                Optional.ofNullable(json.get("expires_in")).map(JsonElement::getAsInt).map(SocialService::getExpirationDate)
+                        .orElse(null);
 
         user.setExpirationDate(expirationDate);
         user.setAccessToken(accessToken);
