@@ -1,7 +1,0 @@
-language: java
-sudo: false
-jdk:
-  - oraclejdk8
-script:
-  - mvn install test
-  - mvn -f social-test/pom.xml test
