@@ -21,10 +21,6 @@
 		<version.org.fenixedu.bennu>6.0.0</version.org.fenixedu.bennu>
 	</properties>
 
-    <issueManagement>
-        <system>JIRA</system>
-        <url>https://jira.fenixedu.org/browse/SCL</url>
-    </issueManagement>
 
     <licenses>
         <license>
@@ -34,17 +30,12 @@
         </license>
     </licenses>
 
-    <ciManagement>
-        <system>Travis CI</system>
-        <url>https://travis-ci.org/FenixEdu/bennu-social</url>
-    </ciManagement>
-
-    <scm>
-        <connection>scm:git:https://github.com/FenixEdu/bennu-social.git</connection>
-        <developerConnection>scm:git:git@github.com:FenixEdu/bennu-social.git</developerConnection>
-        <url>http://fenixedu.org</url>
-        <tag>HEAD</tag>
-    </scm>
+	<scm>
+		<connection>scm:git:git@repo.dsi.tecnico.ulisboa.pt:bennu/application/bennu-social.git</connection>
+		<developerConnection>scm:git:git@repo.dsi.tecnico.ulisboa.pt:bennu/application/bennu-social</developerConnection>
+		<url>https://repo.dsi.tecnico.ulisboa.pt/bennu/application/bennu-social</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<dependencies>
 		<dependency>
@@ -102,5 +93,16 @@
 			<id>fenixedu-maven-repository</id>
 			<url>https://repo.fenixedu.org/fenixedu-maven-repository</url>
 		</repository>
+		<repository>
+			<id>dsi-maven-artifacts</id>
+			<url>https://fenix-ashes.ist.utl.pt/nexus/repository/dsi-private-repo</url>
+		</repository>
 	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>dsi-maven-artifacts</id>
+			<url>https://fenix-ashes.tecnico.ulisboa.pt/nexus/repository/dsi-private-repo</url>
+		</repository>
+	</distributionManagement>
 </project>
