@@ -10,7 +10,7 @@
 	</parent>
 
 	<artifactId>bennu-social</artifactId>
-	<version>DEV-SNAPSHOT</version>
+	<version>3.0.0</version>
 	<packaging>jar</packaging>
 
 	<name>Bennu Social</name>
@@ -34,7 +34,7 @@
 		<connection>scm:git:git@repo.dsi.tecnico.ulisboa.pt:bennu/application/bennu-social.git</connection>
 		<developerConnection>scm:git:git@repo.dsi.tecnico.ulisboa.pt:bennu/application/bennu-social</developerConnection>
 		<url>https://repo.dsi.tecnico.ulisboa.pt/bennu/application/bennu-social</url>
-		<tag>HEAD</tag>
+		<tag>v3.0.0</tag>
 	</scm>
 
 	<dependencies>
